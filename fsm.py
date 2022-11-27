@@ -8,6 +8,7 @@ class TocMachine(GraphMachine):
         self.machine = GraphMachine(model=self, **machine_configs)
 
     def is_going_to_searchCPU(self, event):
+        print('test')
         text = event.message.text
         return text.lower() == "search cpu"
 
