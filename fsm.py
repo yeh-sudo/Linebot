@@ -80,41 +80,40 @@ class TocMachine(GraphMachine):
         return text.lower() == 'show psu'
 
     def on_enter_searchCPU(self, event):
-        replyToken = event.reply_token
-        test(replyToken, event.message.text)
-        self.go_back()
+        print('On search CPU')
+        # self.go_back()
 
     def on_enter_searchMotherboard(self, event):
         print('On search Motherboard')
-        self.go_back()
+        # self.go_back()
     
     def on_enter_searchRam(self, event):
         print('On search Ram')
-        self.go_back()
+        # self.go_back()
 
     def on_enter_searchSSD(self, event):
         print('On search SSD')
-        self.go_back()
+        # self.go_back()
 
     def on_enter_searchAirCooler(self, event):
         print('On search Air Cooler')
-        self.go_back()
+        # self.go_back()
 
     def on_enter_searchAIO(self, event):
         print('On search AIO')
-        self.go_back()
+        # self.go_back()
 
     def on_enter_searchVGA(self, event):
         print('On search VGA')
-        self.go_back()
+        # self.go_back()
 
     def on_enter_searchCase(self, event):
         print('On search Case')
-        self.go_back()
+        # self.go_back()
 
     def on_enter_searchPSU(self, event):
         print('On search PSU')
-        self.go_back()
+        # self.go_back()
 
     def on_enter_showCPU(self, event):
         print('On show CPU')
