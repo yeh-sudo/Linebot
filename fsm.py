@@ -44,8 +44,7 @@ class TocMachine(GraphMachine):
         return text.lower() == 'search PSU'
 
     def is_going_to_showCPU(self, event):
-        text = event.message.text
-        return text.lower() == 'show cpu'
+        return True
 
     def is_going_to_showMotherboard(self, event):
         text = event.message.text
