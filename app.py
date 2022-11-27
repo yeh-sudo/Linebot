@@ -7,33 +7,13 @@ from linebot import LineBotApi, WebhookParser
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
 
-from fsm import TocMachine
+from machine import create_machine
 from utils import send_text_message
 
 load_dotenv()
 
 
-machine = TocMachine(
-    states=["user", "state1", "state2"],
-    transitions=[
-        {
-            "trigger": "advance",
-            "source": "user",
-            "dest": "state1",
-            "conditions": "is_going_to_state1",
-        },
-        {
-            "trigger": "advance",
-            "source": "user",
-            "dest": "state2",
-            "conditions": "is_going_to_state2",
-        },
-        {"trigger": "go_back", "source": ["state1", "state2"], "dest": "user"},
-    ],
-    initial="user",
-    auto_transitions=False,
-    show_conditions=True,
-)
+machine = create_machine()
 
 app = Flask(__name__, static_url_path="")
 
