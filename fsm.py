@@ -1,6 +1,6 @@
 from transitions.extensions import GraphMachine
 
-from utils import send_text_message
+from utils import send_text_message, test
 
 
 class TocMachine(GraphMachine):
@@ -80,7 +80,8 @@ class TocMachine(GraphMachine):
         return text.lower() == 'show psu'
 
     def on_enter_searchCPU(self, event):
-        print('On search CPU')
+        replyToken = event.reply_token
+        test(replyToken, event.message.text)
         self.go_back()
 
     def on_enter_searchMotherboard(self, event):
