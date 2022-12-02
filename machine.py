@@ -2,60 +2,66 @@ from fsm import TocMachine
 
 def create_machine():
     machine = TocMachine(
-        states=["user", "searchCPU", "searchMotherboard", "searchRam", "searchSSD", "searchAirCooler", "searchAIO", "searchVGA", "searchCase", "searchPSU",
+        states=["user", "searchLobby", "searchCPU", "searchMotherboard", "searchRam", "searchSSD", "searchAirCooler", "searchAIO", "searchVGA", "searchCase", "searchPSU",
         "showCPU", "showMotherboard", "showRam", "showSSD", "showAirCooler", "showAIO", "showVGA", "showCase", "showPSU"],
         transitions=[
             {
                 "trigger": "advance",
                 "source": "user",
+                "dest": "searchLobby",
+                "conditions": "is_going_to_searchLobby",
+            },
+            {
+                "trigger": "advance",
+                "source": "searchLobby",
                 "dest": "searchCPU",
                 "conditions": "is_going_to_searchCPU",
             },
             {
                 "trigger": "advance",
-                "source": "user",
+                "source": "searchLobby",
                 "dest": "searchMotherboard",
                 "conditions": "is_going_to_searchMotherboard",
             },
             {
                 "trigger": "advance",
-                "source": "user",
+                "source": "searchLobby",
                 "dest": "searchRam",
                 "conditions": "is_going_to_searchRam",
             },
             {
                 "trigger": "advance",
-                "source": "user",
+                "source": "searchLobby",
                 "dest": "searchSSD",
                 "conditions": "is_going_to_searchSSD",
             },
             {
                 "trigger": "advance",
-                "source": "user",
+                "source": "searchLobby",
                 "dest": "searchAirCooler",
                 "conditions": "is_going_to_searchAirCooler",
             },
             {
                 "trigger": "advance",
-                "source": "user",
+                "source": "searchLobby",
                 "dest": "searchAIO",
                 "conditions": "is_going_to_searchAIO",
             },
             {
                 "trigger": "advance",
-                "source": "user",
+                "source": "searchLobby",
                 "dest": "searchVGA",
                 "conditions": "is_going_to_searchVGA",
             },
             {
                 "trigger": "advance",
-                "source": "user",
+                "source": "searchLobby",
                 "dest": "searchCase",
                 "conditions": "is_going_to_searchCase",
             },
             {
                 "trigger": "advance",
-                "source": "user",
+                "source": "searchLobby",
                 "dest": "searchPSU",
                 "conditions": "is_going_to_searchPSU",
             },
@@ -67,7 +73,19 @@ def create_machine():
             },
             {
                 "trigger": "advance",
+                "source": "showCPU",
+                "dest": "showCPU",
+                "conditions": "is_going_to_showCPU",
+            },
+            {
+                "trigger": "advance",
                 "source": "searchMotherboard",
+                "dest": "showMotherboard",
+                "conditions": "is_going_to_showMotherboard",
+            },
+            {
+                "trigger": "advance",
+                "source": "showMotherboard",
                 "dest": "showMotherboard",
                 "conditions": "is_going_to_showMotherboard",
             },
@@ -79,7 +97,19 @@ def create_machine():
             },
             {
                 "trigger": "advance",
+                "source": "showRam",
+                "dest": "showRam",
+                "conditions": "is_going_to_showRam",
+            },
+            {
+                "trigger": "advance",
                 "source": "searchSSD",
+                "dest": "showSSD",
+                "conditions": "is_going_to_showSSD",
+            },
+            {
+                "trigger": "advance",
+                "source": "showSSD",
                 "dest": "showSSD",
                 "conditions": "is_going_to_showSSD",
             },
@@ -91,7 +121,19 @@ def create_machine():
             },
             {
                 "trigger": "advance",
+                "source": "showAirCooler",
+                "dest": "showAirCooler",
+                "conditions": "is_going_to_showAirCooler",
+            },
+            {
+                "trigger": "advance",
                 "source": "searchAIO",
+                "dest": "showAIO",
+                "conditions": "is_going_to_showAIO",
+            },
+            {
+                "trigger": "advance",
+                "source": "showAIO",
                 "dest": "showAIO",
                 "conditions": "is_going_to_showAIO",
             },
@@ -103,7 +145,19 @@ def create_machine():
             },
             {
                 "trigger": "advance",
+                "source": "showVGA",
+                "dest": "showVGA",
+                "conditions": "is_going_to_showVGA",
+            },
+            {
+                "trigger": "advance",
                 "source": "searchCase",
+                "dest": "showCase",
+                "conditions": "is_going_to_showCase",
+            },
+            {
+                "trigger": "advance",
+                "source": "showCase",
                 "dest": "showCase",
                 "conditions": "is_going_to_showCase",
             },
@@ -114,9 +168,22 @@ def create_machine():
                 "conditions": "is_going_to_showPSU",
             },
             {
+                "trigger": "advance",
+                "source": "showPSU",
+                "dest": "showPSU",
+                "conditions": "is_going_to_showPSU",
+            },
+            {
                 "trigger": "go_back", 
                 "source": ["searchCPU", "searchMotherboard", "searchRam", "searchSSD", "searchAirCooler", "searchAIO", "searchVGA", "searchCase", "searchPSU"], 
-                "dest": "user"
+                "dest": "searchLobby"
+            },
+            {
+                "trigger": "advance", 
+                "source": ["searchCPU", "searchMotherboard", "searchRam", "searchSSD", "searchAirCooler", "searchAIO", "searchVGA", "searchCase", "searchPSU",
+                "showCPU", "showMotherboard", "showRam", "showSSD", "showAirCooler", "showAIO", "showVGA", "showCase", "showPSU"], 
+                "dest": "searchLobby",
+                "conditions": "is_going_back_to_user"
             },
         ],
         initial="user",

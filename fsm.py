@@ -1,15 +1,21 @@
 from transitions.extensions import GraphMachine
 
-from utils import send_text_message
+from utils import send_text_message, getMultiCPU
 
 
 class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
         self.machine = GraphMachine(model=self, **machine_configs)
 
+    def is_going_to_searchLobby(self, event):
+        return True
+
+    def on_enter_searchLobby(self, event):
+        print('On search lobby')
+
     def is_going_to_searchCPU(self, event):
         text = event.message.text
-        return text.lower() == "search cpu"
+        return text.lower() == 'search cpu'
 
     def is_going_to_searchMotherboard(self, event):
         text = event.message.text
@@ -44,102 +50,99 @@ class TocMachine(GraphMachine):
         return text.lower() == 'search PSU'
 
     def is_going_to_showCPU(self, event):
-        return True
+        text = event.message.text
+        return text.lower() != 'no'
 
     def is_going_to_showMotherboard(self, event):
         text = event.message.text
-        return text.lower() == 'show motherboard'
+        return text.lower() != 'no'
 
     def is_going_to_showRam(self, event):
         text = event.message.text
-        return text.lower() == 'show ram'
+        return text.lower() != 'no'
 
     def is_going_to_showSSD(self, event):
         text = event.message.text
-        return text.lower() == 'show ssd'
+        return text.lower() != 'no'
 
     def is_going_to_showAirCooler(self, event):
         text = event.message.text
-        return text.lower() == 'show air cooler'
+        return text.lower() != 'no'
 
     def is_going_to_showAIO(self, event):
         text = event.message.text
-        return text.lower() == 'show AIO'
+        return text.lower() != 'no'
 
     def is_going_to_showVGA(self, event):
         text = event.message.text
-        return text.lower() == 'show vga'
+        return text.lower() != 'no'
 
     def is_going_to_showCase(self, event):
         text = event.message.text
-        return text.lower() == 'show case'
+        return text.lower() != 'no'
 
     def is_going_to_showPSU(self, event):
         text = event.message.text
-        return text.lower() == 'show psu'
+        return text.lower() != 'no'
+
+    def is_going_back_to_user(self, event):
+        text = event.message.text
+        return text.lower() == 'no'
 
     def on_enter_searchCPU(self, event):
         print('On search CPU')
-        # self.go_back()
+        getMultiCPU()
 
     def on_enter_searchMotherboard(self, event):
         print('On search Motherboard')
-        # self.go_back()
     
     def on_enter_searchRam(self, event):
         print('On search Ram')
-        # self.go_back()
 
     def on_enter_searchSSD(self, event):
         print('On search SSD')
-        # self.go_back()
 
     def on_enter_searchAirCooler(self, event):
         print('On search Air Cooler')
-        # self.go_back()
 
     def on_enter_searchAIO(self, event):
         print('On search AIO')
-        # self.go_back()
 
     def on_enter_searchVGA(self, event):
         print('On search VGA')
-        # self.go_back()
 
     def on_enter_searchCase(self, event):
         print('On search Case')
-        # self.go_back()
 
     def on_enter_searchPSU(self, event):
         print('On search PSU')
-        # self.go_back()
 
     def on_enter_showCPU(self, event):
-        print('On show CPU')
+        print('On showCPU' + event.message.text)
 
     def on_enter_showMotherboard(self, event):
-        print('On show Motherboard')
+        print('On showMB' + event.message.text)
     
     def on_enter_showRam(self, event):
-        print('On show Ram')
+        print('On showRam' + event.message.text)
 
     def on_enter_showSSD(self, event):
-        print('On show SSD')
+        print('On showSSD' + event.message.text)
 
     def on_enter_showAirCooler(self, event):
-        print('On show Air Cooler')
+        print('On showAirCooler' + event.message.text)
 
     def on_enter_showAIO(self, event):
-        print('On show AIO')
+        print('On showAIO' + event.message.text)
 
     def on_enter_showVGA(self, event):
-        print('On show VGA')
+        print('On showVGA' + event.message.text)
 
     def on_enter_showCase(self, event):
-        print('On show Case')
+        print('On showCase' + event.message.text)
 
     def on_enter_showPSU(self, event):
-        print('On show PSU')
+        print('On showPSU' + event.message.text)
 
     
 
