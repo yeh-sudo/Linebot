@@ -36,6 +36,116 @@ def getMultiCPU():
         text = result.text
         if "Intel" in text:
             print(text)
+
+
+def getMultiMB():
+    print("search Motherboard...")
+    resp = requests.get(coolpc_url)
+    soup = BeautifulSoup(resp.text, "html5lib")
+
+    X670Results = soup.find("optgroup", label="AMD X670E & X670 / AM5腳位(DDR5)")
+    for result in X670Results:
+        text = result.text
+        if "X670" in text and "送" not in text and "活動" not in text:
+            print(text)
+
+    Z790Results = soup.find("optgroup", label="Intel Z790 / 1700 腳位 (DDR5)-12代.13代皆支援")
+    for result in Z790Results:
+        text = result.text
+        if "Z790" in text and "送" not in text and "活動" not in text:
+            print(text)
+
+
+def getMultiRam():
+    print("search Ram...")
+    resp = requests.get(coolpc_url)
+    soup = BeautifulSoup(resp.text, "html5lib")
+
+    DDR5Results = soup.find("optgroup", label="桌上型記憶體 DDR5 雙通道")
+    for result in DDR5Results:
+        text = result.text
+        if "DDR5" in text:
+            print(text)
+
+
+def getMultiSSD():
+    print("search SSD...")
+    resp = requests.get(coolpc_url)
+    soup = BeautifulSoup(resp.text, "html5lib")
+
+    SSDResults = soup.find("optgroup", label="M.2 PCIe 4.0 (Gen4) SSD固態硬碟")
+    for result in SSDResults:
+        text = result.text
+        if "Gen4" in text:
+            print(text)
+
+
+def getMultiAirCooler():
+    print("search Air Cooler...")
+    resp = requests.get(coolpc_url)
+    soup = BeautifulSoup(resp.text, "html5lib")
+
+    AirCoolerResults = soup.find("optgroup", label="Noctua 貓頭鷹 散熱器 【6年保固】")
+    for result in AirCoolerResults:
+        text = result.text
+        if "貓頭鷹" in text:
+            print(text)
+
+
+def getMultiAIO():
+    print("search AIO...")
+    resp = requests.get(coolpc_url)
+    soup = BeautifulSoup(resp.text, "html5lib")
+
+    AIOResults = soup.find("optgroup", label="恩傑 NZXT【立光代理 6年保固換新】")
+    for result in AIOResults:
+        text = result.text
+        if "Kraken" in text:
+            print(text)
+
+
+def getMultiVGA():
+    print("search VGA...")
+    resp = requests.get(coolpc_url)
+    soup = BeautifulSoup(resp.text, "html5lib")
+
+    RTX4080Results = soup.find("optgroup", label="NVIDIA RTX4080-16G")
+    for result in RTX4080Results:
+        text = result.text
+        if "MHz" in text:
+            print(text)
+
+    RTX4090Results = soup.find("optgroup", label="NVIDIA RTX4090")
+    for result in RTX4090Results:
+        text = result.text
+        if "MHz" in text:
+            print(text)
+
+
+def getMultiCase():
+    print("search Case...")
+    resp = requests.get(coolpc_url)
+    soup = BeautifulSoup(resp.text, "html5lib")
+
+    LianLiResults = soup.find("optgroup", label="聯力工業 LANLI 機殼")
+    for result in LianLiResults:
+        text = result.text
+        if "聯力" in text:
+            print(text)
+
+
+def getMultiPSU():
+    print("search PSU...")
+    resp = requests.get(coolpc_url)
+    soup = BeautifulSoup(resp.text, "html5lib")
+
+    PSUResults = soup.find("optgroup", label="華碩 ASUS【0800到府收送】")
+    for result in PSUResults:
+        text = result.text
+        if "華碩" in text:
+            print(text)
+
+
 """
 def send_image_url(id, img_url):
     pass

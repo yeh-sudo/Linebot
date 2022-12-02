@@ -1,6 +1,6 @@
 from transitions.extensions import GraphMachine
 
-from utils import send_text_message, getMultiCPU
+from utils import send_text_message, getMultiCPU, getMultiMB, getMultiRam, getMultiSSD, getMultiAirCooler, getMultiAIO, getMultiVGA, getMultiCase, getMultiPSU
 
 
 class TocMachine(GraphMachine):
@@ -47,7 +47,7 @@ class TocMachine(GraphMachine):
 
     def is_going_to_searchPSU(self, event):
         text = event.message.text
-        return text.lower() == 'search PSU'
+        return text.lower() == 'search psu'
 
     def is_going_to_showCPU(self, event):
         text = event.message.text
@@ -95,27 +95,35 @@ class TocMachine(GraphMachine):
 
     def on_enter_searchMotherboard(self, event):
         print('On search Motherboard')
+        getMultiMB()
     
     def on_enter_searchRam(self, event):
         print('On search Ram')
+        getMultiRam()
 
     def on_enter_searchSSD(self, event):
         print('On search SSD')
+        getMultiSSD()
 
     def on_enter_searchAirCooler(self, event):
         print('On search Air Cooler')
+        getMultiAirCooler()
 
     def on_enter_searchAIO(self, event):
         print('On search AIO')
+        getMultiAIO()
 
     def on_enter_searchVGA(self, event):
         print('On search VGA')
+        getMultiVGA()
 
     def on_enter_searchCase(self, event):
         print('On search Case')
+        getMultiCase()
 
     def on_enter_searchPSU(self, event):
         print('On search PSU')
+        getMultiPSU()
 
     def on_enter_showCPU(self, event):
         print('On showCPU' + event.message.text)
