@@ -1,7 +1,7 @@
 from transitions.extensions import GraphMachine
 
 from utils import send_text_message, getMultiCPU, getMultiMB, getMultiRam, getMultiSSD, getMultiAirCooler, getMultiAIO, getMultiVGA, getMultiCase, getMultiPSU
-
+from utils import getCPU, getMB, getRam, getSSD, getAirCooler, getAIO, getVGA, getCase, getPSU
 
 class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
@@ -126,31 +126,40 @@ class TocMachine(GraphMachine):
         getMultiPSU()
 
     def on_enter_showCPU(self, event):
-        print('On showCPU' + event.message.text)
+        print('On showCPU ' + event.message.text)
+        getCPU(event.message.text)
 
     def on_enter_showMotherboard(self, event):
-        print('On showMB' + event.message.text)
+        print('On showMB ' + event.message.text)
+        getMB(event.message.text)
     
     def on_enter_showRam(self, event):
-        print('On showRam' + event.message.text)
+        print('On showRam ' + event.message.text)
+        getRam(event.message.text)
 
     def on_enter_showSSD(self, event):
-        print('On showSSD' + event.message.text)
+        print('On showSSD ' + event.message.text)
+        getSSD(event.message.text)
 
     def on_enter_showAirCooler(self, event):
-        print('On showAirCooler' + event.message.text)
+        print('On showAirCooler ' + event.message.text)
+        getAirCooler(event.message.text)
 
     def on_enter_showAIO(self, event):
-        print('On showAIO' + event.message.text)
+        print('On showAIO ' + event.message.text)
+        getAIO(event.message.text)
 
     def on_enter_showVGA(self, event):
-        print('On showVGA' + event.message.text)
+        print('On showVGA ' + event.message.text)
+        getVGA(event.message.text)
 
     def on_enter_showCase(self, event):
-        print('On showCase' + event.message.text)
+        print('On showCase ' + event.message.text)
+        getCase(event.message.text)
 
     def on_enter_showPSU(self, event):
-        print('On showPSU' + event.message.text)
+        print('On showPSU ' + event.message.text)
+        getPSU(event.message.text)
 
     
 

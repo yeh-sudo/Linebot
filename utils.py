@@ -1,7 +1,7 @@
 import os
 
 from linebot import LineBotApi, WebhookParser
-from linebot.models import MessageEvent, TextMessage, TextSendMessage, LocationSendMessage
+from linebot.models import MessageEvent, TextMessage, TextSendMessage, ImageSendMessage, LocationSendMessage, TemplateSendMessage
 
 import requests
 from bs4 import BeautifulSoup
@@ -145,6 +145,158 @@ def getMultiPSU():
         if "華碩" in text:
             print(text)
 
+
+def getCPU(target):
+    print("searching " + target + "...")
+    target = target.lower()
+    resp = requests.get(coolpc_url)
+    soup = BeautifulSoup(resp.text, "html5lib")
+
+    results = soup.find("select", attrs={"name": "n4"})
+    candidates = results.select("option")
+    found = False
+    for c in candidates:
+        text = c.text
+        text = text.lower()
+        if target in text and "送" not in text and "活動" not in text and "狂" not in text and "購買" not in text and "獨家專案" not in text and "愛加購" not in text:
+            print(c.text)
+            found = True
+
+
+def getMB(target):
+    print("searching " + target + "...")
+    target = target.lower()
+    resp = requests.get(coolpc_url)
+    soup = BeautifulSoup(resp.text, "html5lib")
+
+    results = soup.find("select", attrs={"name": "n5"})
+    candidates = results.select("option")
+    found = False
+    for c in candidates:
+        text = c.text
+        text = text.lower()
+        if target in text and "送" not in text and "活動" not in text and "狂" not in text and "購買" not in text and "獨家專案" not in text and "愛加購" not in text and "升級" not in text:
+            print(c.text)
+            found = True
+
+
+def getRam(target):
+    print("searching " + target + "...")
+    target = target.lower()
+    resp = requests.get(coolpc_url)
+    soup = BeautifulSoup(resp.text, "html5lib")
+
+    results = soup.find("select", attrs={"name": "n6"})
+    candidates = results.select("option")
+    found = False
+    for c in candidates:
+        text = c.text
+        text = text.lower()
+        if target in text and "送" not in text and "活動" not in text and "狂" not in text and "購買" not in text and "獨家專案" not in text and "愛加購" not in text:
+            print(c.text)
+            found = True
+
+
+def getSSD(target):
+    print("searching " + target + "...")
+    target = target.lower()
+    resp = requests.get(coolpc_url)
+    soup = BeautifulSoup(resp.text, "html5lib")
+
+    results = soup.find("select", attrs={"name": "n7"})
+    candidates = results.select("option")
+    found = False
+    for c in candidates:
+        text = c.text
+        text = text.lower()
+        if target in text and "送" not in text and "活動" not in text and "狂" not in text and "購買" not in text and "獨家專案" not in text and "愛加購" not in text:
+            print(c.text)
+            found = True
+
+
+def getAirCooler(target):
+    print("searching " + target + "...")
+    target = target.lower()
+    resp = requests.get(coolpc_url)
+    soup = BeautifulSoup(resp.text, "html5lib")
+
+    results = soup.find("select", attrs={"name": "n10"})
+    candidates = results.select("option")
+    found = False
+    for c in candidates:
+        text = c.text
+        text = text.lower()
+        if target in text and "送" not in text and "活動" not in text and "狂" not in text and "購買" not in text and "獨家專案" not in text and "愛加購" not in text:
+            print(c.text)
+            found = True
+
+
+def getAIO(target):
+    print("searching " + target + "...")
+    target = target.lower()
+    resp = requests.get(coolpc_url)
+    soup = BeautifulSoup(resp.text, "html5lib")
+
+    results = soup.find("select", attrs={"name": "n11"})
+    candidates = results.select("option")
+    found = False
+    for c in candidates:
+        text = c.text
+        text = text.lower()
+        if target in text and "送" not in text and "活動" not in text and "狂" not in text and "購買" not in text and "獨家專案" not in text and "愛加購" not in text:
+            print(c.text)
+            found = True
+
+
+def getVGA(target):
+    print("searching " + target + "...")
+    target = target.lower()
+    resp = requests.get(coolpc_url)
+    soup = BeautifulSoup(resp.text, "html5lib")
+
+    results = soup.find("select", attrs={"name": "n12"})
+    candidates = results.select("option")
+    found = False
+    for c in candidates:
+        text = c.text
+        text = text.lower()
+        if target in text and "送" not in text and "活動" not in text and "狂" not in text and "購買" not in text and "獨家專案" not in text and "愛加購" not in text and "開麥加贈" not in text:
+            print(c.text)
+            found = True
+
+
+def getCase(target):
+    print("searching " + target + "...")
+    target = target.lower()
+    resp = requests.get(coolpc_url)
+    soup = BeautifulSoup(resp.text, "html5lib")
+
+    results = soup.find("select", attrs={"name": "n14"})
+    candidates = results.select("option")
+    found = False
+    for c in candidates:
+        text = c.text
+        text = text.lower()
+        if target in text and "送" not in text and "活動" not in text and "狂" not in text and "購買" not in text and "獨家專案" not in text and "愛加購" not in text:
+            print(c.text)
+            found = True
+
+
+def getPSU(target):
+    print("searching " + target + "...")
+    target = target.lower()
+    resp = requests.get(coolpc_url)
+    soup = BeautifulSoup(resp.text, "html5lib")
+
+    results = soup.find("select", attrs={"name": "n15"})
+    candidates = results.select("option")
+    found = False
+    for c in candidates:
+        text = c.text
+        text = text.lower()
+        if target in text and "送" not in text and "活動" not in text and "狂" not in text and "購買" not in text and "獨家專案" not in text and "愛加購" not in text:
+            print(c.text)
+            found = True
 
 """
 def send_image_url(id, img_url):
