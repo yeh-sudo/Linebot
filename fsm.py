@@ -1,7 +1,8 @@
 from transitions.extensions import GraphMachine
 
 from utils import send_text_message, getMultiCPU, getMultiMB, getMultiRam, getMultiSSD, getMultiAirCooler, getMultiAIO, getMultiVGA, getMultiCase, getMultiPSU
-from utils import getCPU, getMB, getRam, getSSD, getAirCooler, getAIO, getVGA, getCase, getPSU
+from utils import getCPU, getMB, getRam, getSSD, getAirCooler, getAIO, getVGA, getCase, getPSU, searchKeyword
+from utils import push_message
 
 class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
@@ -12,6 +13,7 @@ class TocMachine(GraphMachine):
 
     def on_enter_searchLobby(self, event):
         print('On search lobby')
+        searchKeyword(event.reply_token)
 
     def is_going_to_searchCPU(self, event):
         text = event.message.text
@@ -91,75 +93,120 @@ class TocMachine(GraphMachine):
 
     def on_enter_searchCPU(self, event):
         print('On search CPU')
-        getMultiCPU()
+        id = event.source.user_id
+        getMultiCPU(id)
+        push_message(id, "Do you want to keep search? If you want, just type product name.")
 
     def on_enter_searchMotherboard(self, event):
         print('On search Motherboard')
-        getMultiMB()
+        id = event.source.user_id
+        getMultiMB(id)
+        push_message(id, "Do you want to keep search? If you want, just type product name.")
     
     def on_enter_searchRam(self, event):
         print('On search Ram')
-        getMultiRam()
+        id = event.source.user_id
+        getMultiRam(id)
+        push_message(id, "Do you want to keep search? If you want, just type product name.")
 
     def on_enter_searchSSD(self, event):
         print('On search SSD')
-        getMultiSSD()
+        id = event.source.user_id
+        getMultiSSD(id)
+        push_message(id, "Do you want to keep search? If you want, just type product name.")
 
     def on_enter_searchAirCooler(self, event):
         print('On search Air Cooler')
-        getMultiAirCooler()
+        id = event.source.user_id
+        getMultiAirCooler(id)
+        push_message(id, "Do you want to keep search? If you want, just type product name.")
 
     def on_enter_searchAIO(self, event):
         print('On search AIO')
-        getMultiAIO()
+        id = event.source.user_id
+        getMultiAIO(id)
+        push_message(id, "Do you want to keep search? If you want, just type product name.")
 
     def on_enter_searchVGA(self, event):
         print('On search VGA')
-        getMultiVGA()
+        id = event.source.user_id
+        getMultiVGA(id)
+        push_message(id, "Do you want to keep search? If you want, just type product name.")
 
     def on_enter_searchCase(self, event):
         print('On search Case')
-        getMultiCase()
+        id = event.source.user_id
+        getMultiCase(id)
+        push_message(id, "Do you want to keep search? If you want, just type product name.")
 
     def on_enter_searchPSU(self, event):
         print('On search PSU')
-        getMultiPSU()
+        id = event.source.user_id
+        getMultiPSU(id)
+        push_message(id, "Do you want to keep search? If you want, just type product name.")
 
     def on_enter_showCPU(self, event):
         print('On showCPU ' + event.message.text)
-        getCPU(event.message.text)
+        reply_token = event.reply_token
+        id = event.source.user_id
+        getCPU(reply_token, event.message.text)
+        push_message(id, "Do you want to keep search? If you want, just type product name.")
 
     def on_enter_showMotherboard(self, event):
         print('On showMB ' + event.message.text)
-        getMB(event.message.text)
+        reply_token = event.reply_token
+        id = event.source.user_id
+        getMB(id, reply_token, event.message.text)
+        push_message(id, "Do you want to keep search? If you want, just type product name.")
     
     def on_enter_showRam(self, event):
         print('On showRam ' + event.message.text)
-        getRam(event.message.text)
+        reply_token = event.reply_token
+        id = event.source.user_id
+        getRam(id, reply_token, event.message.text)
+        push_message(id, "Do you want to keep search? If you want, just type product name.")
 
     def on_enter_showSSD(self, event):
         print('On showSSD ' + event.message.text)
-        getSSD(event.message.text)
+        reply_token = event.reply_token
+        id = event.source.user_id
+        getSSD(id, reply_token, event.message.text)
+        push_message(id, "Do you want to keep search? If you want, just type product name.")
 
     def on_enter_showAirCooler(self, event):
         print('On showAirCooler ' + event.message.text)
-        getAirCooler(event.message.text)
+        reply_token = event.reply_token
+        id = event.source.user_id
+        getAirCooler(id, reply_token, event.message.text)
+        push_message(id, "Do you want to keep search? If you want, just type product name.")
 
     def on_enter_showAIO(self, event):
         print('On showAIO ' + event.message.text)
-        getAIO(event.message.text)
+        reply_token = event.reply_token
+        id = event.source.user_id
+        getAIO(id, reply_token, event.message.text)
+        push_message(id, "Do you want to keep search? If you want, just type product name.")
 
     def on_enter_showVGA(self, event):
         print('On showVGA ' + event.message.text)
-        getVGA(event.message.text)
+        reply_token = event.reply_token
+        id = event.source.user_id
+        getVGA(id, reply_token, event.message.text)
+        push_message(id, "Do you want to keep search? If you want, just type product name.")
 
     def on_enter_showCase(self, event):
         print('On showCase ' + event.message.text)
-        getCase(event.message.text)
+        reply_token = event.reply_token
+        id = event.source.user_id
+        getCase(id, reply_token, event.message.text)
+        push_message(id, "Do you want to keep search? If you want, just type product name.")
 
     def on_enter_showPSU(self, event):
         print('On showPSU ' + event.message.text)
-        getPSU(event.message.text)
+        reply_token = event.reply_token
+        id = event.source.user_id
+        getPSU(id, reply_token, event.message.text)
+        push_message(id, "Do you want to keep search? If you want, just type product name.")
 
     
 
