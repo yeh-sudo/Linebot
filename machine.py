@@ -2,7 +2,7 @@ from fsm import TocMachine
 
 def create_machine():
     machine = TocMachine(
-        states=["user", "searchLobby", "searchCPU", "searchMotherboard", "searchRam", "searchSSD", "searchAirCooler", "searchAIO", "searchVGA", "searchCase", "searchPSU",
+        states=["user", "help", "fsm", "searchLobby", "searchCPU", "searchMotherboard", "searchRam", "searchSSD", "searchAirCooler", "searchAIO", "searchVGA", "searchCase", "searchPSU",
         "showCPU", "showMotherboard", "showRam", "showSSD", "showAirCooler", "showAIO", "showVGA", "showCase", "showPSU"],
         transitions=[
             {
@@ -10,6 +10,18 @@ def create_machine():
                 "source": "user",
                 "dest": "searchLobby",
                 "conditions": "is_going_to_searchLobby",
+            },
+            {
+                "trigger": "advance",
+                "source": "searchLobby",
+                "dest": "help",
+                "conditions": "is_going_to_help",
+            },
+            {
+                "trigger": "advance",
+                "source": "searchLobby",
+                "dest": "fsm",
+                "conditions": "is_going_to_fsm",
             },
             {
                 "trigger": "advance",
@@ -175,7 +187,7 @@ def create_machine():
             },
             {
                 "trigger": "go_back", 
-                "source": ["searchCPU", "searchMotherboard", "searchRam", "searchSSD", "searchAirCooler", "searchAIO", "searchVGA", "searchCase", "searchPSU"], 
+                "source": ["fsm", "help", "searchCPU", "searchMotherboard", "searchRam", "searchSSD", "searchAirCooler", "searchAIO", "searchVGA", "searchCase", "searchPSU"], 
                 "dest": "searchLobby"
             },
             {

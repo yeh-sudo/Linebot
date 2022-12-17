@@ -8,6 +8,7 @@ import requests
 from bs4 import BeautifulSoup
 
 channel_access_token = os.getenv("LINE_CHANNEL_ACCESS_TOKEN", None)
+fsm = os.getenv("FSM_URL", None)
 
 coolpc_url = 'https://www.coolpc.com.tw/evaluate.php'
 
@@ -33,7 +34,7 @@ def push_message(id, message):
 
 
 def searchKeyword(reply_token):
-    reply = reply = "search CPU: type to search cpu\n"\
+    reply = "search CPU: type to search cpu\n"\
         "search Motherboard: type to search motherboard\n"\
         "search Ram: type to search to search ram\n"\
         "search SSD: type to search ssd\n"\
@@ -43,6 +44,17 @@ def searchKeyword(reply_token):
         "search Case: type to search case\n"\
         "search PSU: type to search PSU\n"
     send_text_message(reply_token, reply)
+
+    return "OK"
+
+
+def sendImg(reply_token):
+    line_bot_api = LineBotApi(channel_access_token)
+    image_message = ImageSendMessage(
+        original_content_url=fsm + "/show-fsm",
+        preview_image_url=fsm + "/show-fsm"
+    )
+    line_bot_api.reply_message(reply_token, image_message)
 
     return "OK"
 

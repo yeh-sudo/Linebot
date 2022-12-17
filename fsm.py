@@ -2,7 +2,7 @@ from transitions.extensions import GraphMachine
 
 from utils import send_text_message, getMultiCPU, getMultiMB, getMultiRam, getMultiSSD, getMultiAirCooler, getMultiAIO, getMultiVGA, getMultiCase, getMultiPSU
 from utils import getCPU, getMB, getRam, getSSD, getAirCooler, getAIO, getVGA, getCase, getPSU, searchKeyword
-from utils import push_message
+from utils import push_message, sendImg
 
 class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
@@ -10,6 +10,24 @@ class TocMachine(GraphMachine):
 
     def is_going_to_searchLobby(self, event):
         return True
+    
+    def is_going_to_help(self, event):
+        text = event.message.text
+        return text.lower() == 'help'
+
+    def on_enter_help(self, event):
+        print('On help')
+        searchKeyword(event.reply_token)
+        self.go_back()
+
+    def is_going_to_fsm(self, event):
+        text = event.message.text
+        return text.lower() == 'fsm'
+
+    def on_enter_fsm(self, event):
+        print('On help')
+        sendImg(event.reply_token)
+        self.go_back()
 
     def on_enter_searchLobby(self, event):
         print('On search lobby')

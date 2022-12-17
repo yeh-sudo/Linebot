@@ -84,7 +84,7 @@ def webhook_handler():
         response = machine.advance(event)
         print(f"\nFSM CURRENT STATE: {machine.state}")
         if response == False:
-            send_text_message(event.reply_token, "Not Entering any State")
+            send_text_message(event.reply_token, "Invalid message, please try again.")
 
     return "OK"
 
