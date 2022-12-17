@@ -75,4 +75,4 @@ Or You can use [servo](http://serveo.net/) to expose local servers to the intern
 
 ## Finite State Machine
 
-![fsm](./figures/fsm.png)
+![fsm](./images/fsm.png)
