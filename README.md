@@ -31,6 +31,10 @@ cd env/Scripts
 * pygraphviz (For visualizing Finite State Machine)
   * Go to [PyGraphviz](https://pygraphviz.github.io/documentation/stable/install.html)
 
+```
+pip install -r requirements.txt
+```
+
 #### Secret Data
 
 You should generate a `.env` file to set Environment Variables refer to our `.env.sample`.
