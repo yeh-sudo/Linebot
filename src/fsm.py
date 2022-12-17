@@ -1,8 +1,8 @@
 from transitions.extensions import GraphMachine
 
-from utils import send_text_message, getMultiCPU, getMultiMB, getMultiRam, getMultiSSD, getMultiAirCooler, getMultiAIO, getMultiVGA, getMultiCase, getMultiPSU
-from utils import getCPU, getMB, getRam, getSSD, getAirCooler, getAIO, getVGA, getCase, getPSU, searchKeyword
-from utils import push_message, sendImg
+from src.utils import send_text_message, getMultiCPU, getMultiMB, getMultiRam, getMultiSSD, getMultiAirCooler, getMultiAIO, getMultiVGA, getMultiCase, getMultiPSU
+from src.utils import getCPU, getMB, getRam, getSSD, getAirCooler, getAIO, getVGA, getCase, getPSU, searchKeyword
+from src.utils import push_message, sendImg
 
 class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):

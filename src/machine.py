@@ -1,4 +1,4 @@
-from fsm import TocMachine
+from src.fsm import TocMachine
 
 def create_machine():
     machine = TocMachine(
