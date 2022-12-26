@@ -6,6 +6,14 @@
 
 A Line bot based on a finite state machine
 
+## Basic Imformation
+
+Linebot ID
+
+```
+@012nvufm
+```
+
 ## Setup
 
 ### Prerequisite
